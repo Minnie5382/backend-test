@@ -85,8 +85,9 @@ public class JWTFilter extends OncePerRequestFilter {
             if (dbToken.equals(refresh)) {
                 String newAccessToken = JWTUtil.changeAccessToken(userSequenceValue, "ROLE_USER");
 
-                Cookie accessCookie = new Cookie("Cineffiaccess", newAccessToken);
-                accessCookie.setMaxAge((int) ACCESS_PERIOD);
+                Cookie accessCookie = new Cookie("access", newAccessToken);
+//                accessCookie.setMaxAge((int) ACCESS_PERIOD);
+                accessCookie.setMaxAge(-1);
                 accessCookie.setPath("/");
                 accessCookie.setHttpOnly(true);
                 response.addCookie(accessCookie);

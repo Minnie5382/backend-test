@@ -211,7 +211,7 @@ public class AuthService {
 
         JWToken jwToken = JWTUtil.allocateToken(userId,"ROLE_USER");//액세스 토큰 발급
         //Access 토큰 쿠키
-        ResponseCookie accessCookie = ResponseCookie.from("Cineffiaccess",jwToken.getAccessToken())
+        ResponseCookie accessCookie = ResponseCookie.from("access",jwToken.getAccessToken())
                 .sameSite("None")
 //                .maxAge(ACCESS_PERIOD)
                 .maxAge(-1l)
@@ -222,7 +222,7 @@ public class AuthService {
         //Refresh 토큰 쿠키
 
         normalLoginRefreshToken(userId, jwToken.getRefreshToken());
-        ResponseCookie refreshCookie = ResponseCookie.from("Cineffirefresh",jwToken.getRefreshToken())
+        ResponseCookie refreshCookie = ResponseCookie.from("refresh",jwToken.getRefreshToken())
                 .sameSite("None")
 //                .maxAge(REFRESH_PERIOD)
                 .maxAge(-1l)
@@ -312,7 +312,7 @@ public class AuthService {
 
     public Object[] logout(Long userId) {
         HttpHeaders headers = new HttpHeaders();
-        ResponseCookie cookie = ResponseCookie.from("Cineffiaccess", "")
+        ResponseCookie cookie = ResponseCookie.from("access", "")
                 .sameSite("None")
                 .secure(true)
                 .maxAge(0)
@@ -320,7 +320,7 @@ public class AuthService {
                 .httpOnly(true)
                 .build();
 
-        ResponseCookie cookie2 = ResponseCookie.from("Cineffirefresh", "")
+        ResponseCookie cookie2 = ResponseCookie.from("refresh", "")
                 .sameSite("None")
                 .secure(true)
                 .maxAge(0)
