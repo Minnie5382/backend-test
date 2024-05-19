@@ -213,7 +213,8 @@ public class AuthService {
         //Access 토큰 쿠키
         ResponseCookie accessCookie = ResponseCookie.from("Cineffiaccess",jwToken.getAccessToken())
                 .sameSite("None")
-                .maxAge(ACCESS_PERIOD)
+//                .maxAge(ACCESS_PERIOD)
+                .maxAge(-1l)
                 .path("/")
                 .httpOnly(true)
                 .secure(true)
@@ -223,7 +224,8 @@ public class AuthService {
         normalLoginRefreshToken(userId, jwToken.getRefreshToken());
         ResponseCookie refreshCookie = ResponseCookie.from("Cineffirefresh",jwToken.getRefreshToken())
                 .sameSite("None")
-                .maxAge(REFRESH_PERIOD)
+//                .maxAge(REFRESH_PERIOD)
+                .maxAge(-1l)
                 .path("/")
                 .httpOnly(true)
                 .secure(true)
