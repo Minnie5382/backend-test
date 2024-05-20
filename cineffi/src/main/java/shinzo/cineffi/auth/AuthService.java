@@ -64,7 +64,7 @@ public class AuthService {
     }
 
     public KakaoToken requestKakaoToken(String code){
-//        RestTemplate rt = new RestTemplate();
+        RestTemplate rt = new RestTemplate();
         //요청보낼 헤더 생성
         HttpHeaders headers = new HttpHeaders();
         headers.add("Content-type", "application/x-www-form-urlencoded;charset=utf-8");
@@ -79,7 +79,7 @@ public class AuthService {
                 new HttpEntity<>(params, headers);
 
         //ResponseEntity 객체를 String 형만 받도록 생성. 응답받는 값이 Json 형식이니까
-        ResponseEntity<String> accessTokenResponse = restTemplate.exchange(
+        ResponseEntity<String> accessTokenResponse = rt.exchange(
                 "https://kauth.kakao.com/oauth/token",
                 HttpMethod.POST,
                 kakaoTokenRequest,
