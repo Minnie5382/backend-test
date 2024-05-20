@@ -65,11 +65,11 @@ kobis:
   #  api_key: 2a45813037fb723c2d8b3dbd808e1328 #5
   #  api_key: 4564a256f40c78acde5f8406a7b65dc6 #6
   #  api_key: ac0934e1fbde3331f44992550b1e1d9d #7
-  #  api_key: ab9624b11878afc7bbcafef6409d81c1 #8
-  #  api_key: c305d916b8f8d83032f21878c3db1c16 #9
+  api_key: ab9624b11878afc7bbcafef6409d81c1 #8
+#  api_key: c305d916b8f8d83032f21878c3db1c16 #9
   #  api_key: 333eabf2df141a538e910bae70243fc1 #10
-  api_key: 0994d8ac050005fb257070390088ea85 #11
-#  api_key: eb64f7ff5664a19e68063e2369de4cda #1211
+#  api_key: 0994d8ac050005fb257070390088ea85 #11
+#  api_key: eb64f7ff5664a19e68063e2369de4cda #12
 
 
   base_url: http://www.kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json

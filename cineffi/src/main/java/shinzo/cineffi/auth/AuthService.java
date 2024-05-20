@@ -38,6 +38,8 @@ public class AuthService {
     private final UserAnalysisRepository userAnalysisRepository;
     private final GenreRecordRepository genreRecordRepository;
     private final FollowRepository followRepository;
+    private final RestTemplate restTemplate;
+
 //    private final EncryptUtil encryptUtil;
     @Value("${kakao.rest_api_key}")
     private String restApiKey;
@@ -62,7 +64,7 @@ public class AuthService {
     }
 
     public KakaoToken requestKakaoToken(String code){
-        RestTemplate rt = new RestTemplate();
+//        RestTemplate rt = new RestTemplate();
         //요청보낼 헤더 생성
         HttpHeaders headers = new HttpHeaders();
         headers.add("Content-type", "application/x-www-form-urlencoded;charset=utf-8");
@@ -77,7 +79,7 @@ public class AuthService {
                 new HttpEntity<>(params, headers);
 
         //ResponseEntity 객체를 String 형만 받도록 생성. 응답받는 값이 Json 형식이니까
-        ResponseEntity<String> accessTokenResponse = rt.exchange(
+        ResponseEntity<String> accessTokenResponse = restTemplate.exchange(
                 "https://kauth.kakao.com/oauth/token",
                 HttpMethod.POST,
                 kakaoTokenRequest,
@@ -99,7 +101,7 @@ public class AuthService {
 
     //카카오 토큰으로 카카오 이메일 가져오기
     private String requestKakaoEmail(String accessToken){
-        RestTemplate rt = new RestTemplate();
+//        RestTemplate rt = new RestTemplate();
 
         //헤더 생성
         HttpHeaders headers = new HttpHeaders();
@@ -109,7 +111,7 @@ public class AuthService {
         HttpEntity<MultiValueMap<String, String>> kakaoProfileRequest = new HttpEntity<>(headers);
 
         //요청을 만들어 보내고, 그걸 응답에 받기
-        ResponseEntity<String> kakaoProfileResponse = rt.exchange(
+        ResponseEntity<String> kakaoProfileResponse = restTemplate.exchange(
                 "https://kapi.kakao.com/v2/user/me",
                 HttpMethod.POST,
                 kakaoProfileRequest,
