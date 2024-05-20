@@ -29,7 +29,7 @@ public class AuthController {
     private final AuthService authService;
 
     @Value("${kakao.redirect_url}")
-    private String REDIRECT_BASE_URL;
+    private String REDIRECT_URL;
 
     @GetMapping("/auth/login/kakao")
     public ResponseEntity<ResponseDTO<Object>> loginKakao(@RequestParam final String code) throws JsonProcessingException {
@@ -113,7 +113,7 @@ public class AuthController {
         HttpHeaders headers = (HttpHeaders) result[0];
 
         // 리다이렉션 URL 설정
-        String redirectUrl = REDIRECT_BASE_URL;
+        String redirectUrl = REDIRECT_URL;
 
         // ResponseDTO 생성
         ResponseDTO<Object> responseDTO = ResponseDTO.<Object>builder()
