@@ -14,7 +14,6 @@ public class RestTemplateConfig {
     @Bean
     public RestTemplate restTemplate() {
         Proxy proxy = new Proxy(Proxy.Type.HTTP, new InetSocketAddress("krmp-proxy.9rum.cc", 3128));
-//        Proxy proxy = new Proxy(Proxy.Type.HTTP, new InetSocketAddress("10.95.34.212", 32765));
         SimpleClientHttpRequestFactory requestFactory = new SimpleClientHttpRequestFactory();
 
         requestFactory.setProxy(proxy);

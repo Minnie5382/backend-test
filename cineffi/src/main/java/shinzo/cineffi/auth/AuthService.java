@@ -80,7 +80,7 @@ public class AuthService {
 
         //ResponseEntity 객체를 String 형만 받도록 생성. 응답받는 값이 Json 형식이니까
         ResponseEntity<String> accessTokenResponse = restTemplate.exchange(
-                "https://kauth.kakao.com/oauth/token",
+                "http://kauth.kakao.com/oauth/token",
                 HttpMethod.POST,
                 kakaoTokenRequest,
                 String.class
